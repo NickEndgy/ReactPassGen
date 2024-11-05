@@ -8,23 +8,50 @@ function App() {
   const [inputValue, setInputValue] = useState('');
 
 
-  useEffect(() => {
-    const arrayNumber = Array.from({ length: 5 }, () => Math.floor(Math.random() * 10));
+  function genStart() {
 
-    setInputValue(arrayNumber.join(''));
+    const arrayNumber = []
+    const arrayLetters = [];
+    const arrayAll = [];
+
+
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+    console.log(alphabet);
+
+    for (let i = 0; i < 5; i++) {
+
+      arrayNumber.push(Math.floor(Math.random() * 10));
+
+
+
+      arrayLetters.push(alphabet[Math.floor(Math.random() * alphabet.length)])
+
+      console.log()
+
+    }
     console.log(arrayNumber);
-  }, [])
 
-  function genClick() {
+    console.log(arrayLetters);
+
+    arrayAll.push(arrayNumber);
+    arrayAll.push(arrayLetters);
+
+    console.log(arrayAll)
+
+
+    setInputValue(arrayAll.join(''));
 
   }
+
+
 
 
 
   return (
     <>
       <input type="text" value={inputValue} readOnly />
-      <button>Сгенерировать</button>
+      <button onClick={genStart}>Сгенерировать</button>
     </>
   )
 }
