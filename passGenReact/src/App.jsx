@@ -10,44 +10,32 @@ function App() {
 
   function genStart() {
 
+    // Создаем массивы, 3 пустых, 2 с буквами
+
     const arrayNumber = []
     const arrayLetters = [];
-    const arrayAll = [];
-
-
+    const arrayLettersTop = []
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    const alphabetTop = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-    console.log(alphabet);
 
+    // Создаем массив, который будет создавать 5 букв, 5 строчных букв и 5 заглавных
     for (let i = 0; i < 5; i++) {
-
       arrayNumber.push(Math.floor(Math.random() * 10));
-
-
-
-      arrayLetters.push(alphabet[Math.floor(Math.random() * alphabet.length)])
-
-      console.log()
-
+      arrayLetters.push(alphabet[Math.floor(Math.random() * alphabet.length)]);
+      arrayLettersTop.push(alphabetTop[Math.floor(Math.random() * alphabetTop.length)]);
     }
-    console.log(arrayNumber);
 
-    console.log(arrayLetters);
+    // Объединяем 3 массива в один
+    const arrayAll = [...arrayNumber, ...arrayLetters, ...arrayLettersTop];
 
-    arrayAll.push(arrayNumber);
-    arrayAll.push(arrayLetters);
+    // Перемешиваем цифры и буквы в массиве
+    arrayAll.sort(() => Math.random() - 0.5);
 
-    console.log(arrayAll)
-
-
-    setInputValue(arrayAll.join(''));
+    // Переносим в input массив, который мы перевели в строку
+    setInputValue(arrayAll.join(''))
 
   }
-
-
-
-
-
   return (
     <>
       <input type="text" value={inputValue} readOnly />
